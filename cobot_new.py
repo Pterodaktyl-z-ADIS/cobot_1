@@ -225,13 +225,14 @@ if __name__ == '__main__':
 	os.system("gnome-terminal --tab -- roslaunch ur3_moveit_config ur3_moveit_planning_execution.launch sim:=true")
 	os.system("sleep 5s")
 	os.system("gnome-terminal --tab -- roslaunch ur3_moveit_config moveit_rviz.launch config:=true")
-
+	
 	pose_goal = Pose()
 	moveit_commander.roscpp_initialize(sys.argv)
 	rospy.init_node ( 'ur3_move', anonymous = True )
 	group = [moveit_commander.MoveGroupCommander("manipulator")]
 # display_trajectory_publisher = rospy.Publisher('/move_group/display_planned_path', moveit_msgs.msg.DisplayTrajectory,queue_size=20)
-
+    except:
+	print 'Error loading windows'
 	while not rospy.is_shutdown():
     	    print("**** MAIN MENU ****")
     	    print("Please select an option and press << enter >> : ")
